@@ -59,6 +59,26 @@ end
 
 After running `pod install` complete the tasks in [**Final Test Target Configurations**](#final-test-target-configurations) below for the final details on getting your tests to run.
 
+Installation (with Carthage)
+----------------------------
+
+Like other install options, first make sure you have a test target created for use with KIF.  Instructions can be found in the CocoaPods setup instructions above.
+
+As test targets do not have the "Embedded Binaries" section, the frameworks must
+be added to the target's "Link Binary With Libraries" as well as a "Copy Files" build phase
+to copy them to the target's Frameworks destination.
+
+
+1. Since the KIF is used in Test Targets and you don't want to add it to your app, add KIF to your [Cartfile.private](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfileprivate) file.
+
+
+    ```
+    github "kif-framework/KIF"
+    ```
+
+2. Run `carthage update`.  This will compile the KIF Framework and place the compiled Framework in `Carthage/Build/<Platform>/KIF.framework`.
+3. Go to your _Test Target_ and click on _Build Phases_ tab. Add  `KIF.framework` to the  _Link Binary With Libraries_ section. You can do this either by dragging it from the finder or by clicking the +, selecting the _Add Other..._ dropdown and navigating to the Carthage Build folder.
+
 Installation (from GitHub)
 --------------------------
 
