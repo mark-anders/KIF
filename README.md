@@ -71,13 +71,17 @@ to copy them to the target's Frameworks destination.
 
 1. Since the KIF is used in Test Targets and you don't want to add it to your app, add KIF to your [Cartfile.private](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfileprivate) file.
 
-
     ```
     github "kif-framework/KIF"
     ```
 
 2. Run `carthage update`.  This will compile the KIF Framework and place the compiled Framework in `Carthage/Build/<Platform>/KIF.framework`.
 3. Go to your _Test Target_ and click on _Build Phases_ tab. Add  `KIF.framework` to the  _Link Binary With Libraries_ section. You can do this either by dragging it from the finder or by clicking the +, selecting the _Add Other..._ dropdown and navigating to the Carthage Build folder.
+4. While still on the _Build Phases_ tab for the _Test Target_, click on the '+' button at the top and select _New Copy Files Phase_. Select _Frameworks_ for the Destination and add the `KIF.framework`.
+
+
+If you are using KIF with Swift, follow the steps to add a bridging header in [Use with Swift](#use-with-swift).
+
 
 Installation (from GitHub)
 --------------------------
